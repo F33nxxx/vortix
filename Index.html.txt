@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vortix Technology</title>
+    <style>
+        body { font-family: Arial; text-align: center; margin: 0; padding: 40px; background: #0a0a1f; color: white; }
+        nav { background: linear-gradient(to right, #000, #003366); padding: 15px; }
+        nav a { color: #00ffff; margin: 0 15px; text-decoration: none; font-weight: bold; }
+        img { width: 420px; border-radius: 15px; margin: 30px 0; box-shadow: 0 0 40px #00ffff; }
+        .tagline { font-size: 26px; color: #00ffcc; margin: 20px 0; font-weight: bold; text-shadow: 0 0 15px #00ffcc; }
+        .buy-btn { background: #00ffaa; color: black; padding: 18px 40px; font-size: 22px; border: none; border-radius: 50px; margin: 20px; cursor: pointer; box-shadow: 0 0 30px #00ffaa; }
+        .contract { margin-top: 20px; font-family: monospace; font-size: 16px; color: #00ffff; word-break: break-all; }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+    </nav>
+    
+    <h1>Welcome to Vortix Technology</h1>
+    <p class="tagline">The agentic AI solution of the future, get your coins on presale now!</p>
+    
+    <img src="https://picsum.photos/id/1015/800/450" alt="Futuristic AI Robot in Space">
+    
+    <a href="https://t.me/yourtelegram" target="_blank"><button class="buy-btn">BUY $VORTIX NOW</button></a>
+    
+    <div class="contract">
+        Contract: YOUR_CONTRACT_HERE
+    </div>
+    
+    <div style="margin-top:30px;">
+        <a href="https://t.me/yourtelegram" target="_blank" style="color:#00ffff; margin:0 25px; font-size:20px;">Telegram</a>
+        <a href="https://yourwebsite.com" target="_blank" style="color:#00ffff; margin:0 25px; font-size:20px;">Website</a>
+    </div>
+</body>
+</html>
