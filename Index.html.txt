@@ -3,38 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vortix Technology</title>
+    <meta name="description" content="Improved HTML structure with semantic tags, responsive design, and a functional contact form with validation.">
+    <meta property="og:title" content="Improved HTML Document" />
+    <meta property="og:description" content="A demo of enhanced HTML features with semantics and responsive design" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://example.com" />
+    <title>Improved HTML Document</title>
+    <link rel="stylesheet" href="styles.css">
     <style>
-        body { font-family: Arial; text-align: center; margin: 0; padding: 40px; background: #0a0a1f; color: white; }
-        nav { background: linear-gradient(to right, #000, #003366); padding: 15px; }
-        nav a { color: #00ffff; margin: 0 15px; text-decoration: none; font-weight: bold; }
-        img { width: 420px; border-radius: 15px; margin: 30px 0; box-shadow: 0 0 40px #00ffff; }
-        .tagline { font-size: 26px; color: #00ffcc; margin: 20px 0; font-weight: bold; text-shadow: 0 0 15px #00ffcc; }
-        .buy-btn { background: #00ffaa; color: black; padding: 18px 40px; font-size: 22px; border: none; border-radius: 50px; margin: 20px; cursor: pointer; box-shadow: 0 0 30px #00ffaa; }
-        .contract { margin-top: 20px; font-family: monospace; font-size: 16px; color: #00ffff; word-break: break-all; }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header, footer {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        main {
+            margin: 20px;
+            padding: 20px;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+        }
+        .contact-form input, .contact-form textarea {
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: border-color 0.3s;
+        }
+        .contact-form input:focus, .contact-form textarea:focus {
+            border-color: #333;
+        }
+        .contact-form button {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .contact-form button:hover {
+            background-color: #555;
+        }
     </style>
 </head>
 <body>
-    <nav>
-        <a href="#">Home</a>
-        <a href="#">About</a>
-        <a href="#">Contact</a>
-    </nav>
-    
-    <h1>Welcome to Vortix Technology</h1>
-    <p class="tagline">The agentic AI solution of the future, get your coins on presale now!</p>
-    
-    <img src="https://picsum.photos/id/1015/800/450" alt="Futuristic AI Robot in Space">
-    
-    <a href="https://t.me/yourtelegram" target="_blank"><button class="buy-btn">BUY $VORTIX NOW</button></a>
-    
-    <div class="contract">
-        Contract: YOUR_CONTRACT_HERE
-    </div>
-    
-    <div style="margin-top:30px;">
-        <a href="https://t.me/yourtelegram" target="_blank" style="color:#00ffff; margin:0 25px; font-size:20px;">Telegram</a>
-        <a href="https://yourwebsite.com" target="_blank" style="color:#00ffff; margin:0 25px; font-size:20px;">Website</a>
-    </div>
+    <header>
+        <h1>Welcome to the Improved Page</h1>
+    </header>
+    <main>
+        <h2>Contact Us</h2>
+        <form class="contact-form" onsubmit="return validateForm()">
+            <input type="text" id="name" name="name" placeholder="Your Name" required>
+            <input type="email" id="email" name="email" placeholder="Your Email" required>
+            <textarea id="message" name="message" rows="4" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </main>
+    <footer>
+        <p>© 2026 Your Company</p>
+    </footer>
+    <script>
+        function validateForm() {
+            var email = document.getElementById("email").value;
+            var pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!pattern.test(email)) {
+                alert("Please enter a valid email address.");
+                return false;
+            }
+            return true;
+        }
+    </script>
 </body>
 </html>
