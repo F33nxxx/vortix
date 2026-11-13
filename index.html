@@ -1,89 +1,658 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Improved HTML structure with semantic tags, responsive design, and a functional contact form with validation.">
-    <meta property="og:title" content="Improved HTML Document" />
-    <meta property="og:description" content="A demo of enhanced HTML features with semantics and responsive design" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://example.com" />
-    <title>Improved HTML Document</title>
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        header, footer {
-            background-color: #333;
-            color: white;
-            padding: 10px 20px;
-            text-align: center;
-        }
-        main {
-            margin: 20px;
-            padding: 20px;
-            background: white;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .contact-form {
-            display: flex;
-            flex-direction: column;
-        }
-        .contact-form input, .contact-form textarea {
-            margin: 10px 0;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            transition: border-color 0.3s;
-        }
-        .contact-form input:focus, .contact-form textarea:focus {
-            border-color: #333;
-        }
-        .contact-form button {
-            background-color: #333;
-            color: white;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        .contact-form button:hover {
-            background-color: #555;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vortix · Solana-bot Grok Templates</title>
+  <meta name="description" content="Research-only Solana Grok Bot templates by f33nxxx. Fresh launches, post-migration continuation, and pullback/reclaim scouts — never trades, never touches keys." />
+  <meta property="og:title" content="Vortix · Solana-bot" />
+  <meta property="og:description" content="Add research-only Solana Grok Bot templates. Scout launches, migrations, and reclaim setups." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #07090c;
+      --ink-2: #0e1218;
+      --fog: #9aa7b5;
+      --paper: #e8edf2;
+      --mint: #3dffb5;
+      --mint-dim: rgba(61, 255, 181, 0.14);
+      --amber: #ffb454;
+      --line: rgba(232, 237, 242, 0.1);
+      --danger: #ff6b6b;
+      --max: 1080px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "IBM Plex Sans", sans-serif;
+      color: var(--paper);
+      background: var(--ink);
+      line-height: 1.5;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .atmosphere {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background:
+        radial-gradient(ellipse 80% 55% at 70% -10%, rgba(61, 255, 181, 0.18), transparent 55%),
+        radial-gradient(ellipse 60% 45% at 10% 20%, rgba(255, 180, 84, 0.08), transparent 50%),
+        radial-gradient(ellipse 70% 50% at 50% 110%, rgba(61, 255, 181, 0.08), transparent 55%),
+        linear-gradient(180deg, #07090c 0%, #0a0f14 45%, #07090c 100%);
+    }
+
+    .atmosphere::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(232, 237, 242, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(232, 237, 242, 0.03) 1px, transparent 1px);
+      background-size: 72px 72px;
+      mask-image: radial-gradient(ellipse at center, black 20%, transparent 75%);
+      animation: gridDrift 28s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes gridDrift {
+      from { transform: translateY(0); }
+      to { transform: translateY(72px); }
+    }
+
+    .tape {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 20;
+      display: flex;
+      gap: 2.5rem;
+      overflow: hidden;
+      white-space: nowrap;
+      padding: 0.55rem 0;
+      background: rgba(7, 9, 12, 0.85);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--fog);
+    }
+
+    .tape-track {
+      display: flex;
+      gap: 2.5rem;
+      animation: marquee 32s linear infinite;
+      min-width: max-content;
+    }
+
+    .tape span { color: var(--mint); }
+    .tape em { font-style: normal; color: var(--amber); }
+
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    .wrap {
+      width: min(100% - 2.5rem, var(--max));
+      margin-inline: auto;
+    }
+
+    /* HERO — one composition */
+    .hero {
+      min-height: 100svh;
+      display: grid;
+      align-content: end;
+      padding: 5.5rem 0 4rem;
+      position: relative;
+    }
+
+    .hero-visual {
+      position: absolute;
+      inset: 12% 0 auto;
+      height: 52%;
+      pointer-events: none;
+      opacity: 0;
+      animation: rise 1.1s ease 0.15s forwards;
+    }
+
+    .hero-visual svg {
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 1;
+      max-width: 38rem;
+      opacity: 0;
+      animation: rise 0.9s ease 0.35s forwards;
+    }
+
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(22px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .brand {
+      font-family: "Syne", sans-serif;
+      font-weight: 800;
+      font-size: clamp(3.4rem, 11vw, 7.2rem);
+      line-height: 0.9;
+      letter-spacing: -0.04em;
+      margin-bottom: 1.25rem;
+    }
+
+    .brand small {
+      display: block;
+      margin-top: 0.55rem;
+      font-size: clamp(0.95rem, 2.2vw, 1.15rem);
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--mint);
+    }
+
+    .hero h1 {
+      font-family: "Syne", sans-serif;
+      font-weight: 700;
+      font-size: clamp(1.45rem, 3.4vw, 2rem);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      max-width: 18ch;
+      margin-bottom: 0.85rem;
+    }
+
+    .hero p {
+      color: var(--fog);
+      font-size: 1.05rem;
+      max-width: 34ch;
+      margin-bottom: 1.75rem;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.2rem;
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border: 1px solid transparent;
+      transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+
+    .btn-primary {
+      background: var(--mint);
+      color: var(--ink);
+      font-weight: 500;
+    }
+
+    .btn-primary:hover { background: #78ffcb; }
+
+    .btn-ghost {
+      border-color: var(--line);
+      color: var(--paper);
+      background: rgba(14, 18, 24, 0.55);
+    }
+
+    .btn-ghost:hover { border-color: rgba(61, 255, 181, 0.45); color: var(--mint); }
+
+    section {
+      padding: 5rem 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-label {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--mint);
+      margin-bottom: 0.85rem;
+    }
+
+    .section-head {
+      font-family: "Syne", sans-serif;
+      font-weight: 700;
+      font-size: clamp(1.6rem, 3.5vw, 2.35rem);
+      letter-spacing: -0.03em;
+      max-width: 18ch;
+      margin-bottom: 0.65rem;
+    }
+
+    .section-sub {
+      color: var(--fog);
+      max-width: 42ch;
+      margin-bottom: 2.25rem;
+    }
+
+    .scout-list {
+      display: grid;
+      gap: 0;
+    }
+
+    .scout {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1rem 1.5rem;
+      align-items: end;
+      padding: 1.6rem 0;
+      border-top: 1px solid var(--line);
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .scout.in { opacity: 1; transform: none; }
+
+    .scout:last-child { border-bottom: 1px solid var(--line); }
+
+    .scout-meta {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 0.45rem;
+    }
+
+    .scout h3 {
+      font-family: "Syne", sans-serif;
+      font-size: clamp(1.35rem, 2.8vw, 1.85rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.4rem;
+    }
+
+    .scout p {
+      color: var(--fog);
+      max-width: 52ch;
+      font-size: 0.98rem;
+    }
+
+    .scout .btn { align-self: center; }
+
+    .rules {
+      display: grid;
+      gap: 1rem;
+      max-width: 40rem;
+    }
+
+    .rule {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.85rem;
+      align-items: start;
+      padding: 0.2rem 0;
+    }
+
+    .rule i {
+      font-family: "IBM Plex Mono", monospace;
+      font-style: normal;
+      font-size: 0.75rem;
+      color: var(--mint);
+      margin-top: 0.2rem;
+    }
+
+    .rule strong {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 0.15rem;
+    }
+
+    .rule span { color: var(--fog); font-size: 0.95rem; }
+
+    .copy-rule {
+      margin-top: 1.75rem;
+      padding: 1rem 1.1rem;
+      background: var(--mint-dim);
+      border-left: 3px solid var(--mint);
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.85rem;
+      color: var(--paper);
+    }
+
+    .suite-grid {
+      display: grid;
+      gap: 0;
+    }
+
+    .suite-item {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 1rem;
+      align-items: center;
+      padding: 1.25rem 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .suite-item:last-child { border-bottom: 1px solid var(--line); }
+
+    .suite-item h3 {
+      font-family: "Syne", sans-serif;
+      font-size: 1.2rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .suite-item p { color: var(--fog); font-size: 0.92rem; max-width: 48ch; }
+
+    .link-out {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--mint);
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .link-out:hover { border-color: var(--mint); }
+
+    .steps {
+      counter-reset: step;
+      display: grid;
+      gap: 1.25rem;
+      max-width: 36rem;
+    }
+
+    .step {
+      counter-increment: step;
+      display: grid;
+      grid-template-columns: 2.2rem 1fr;
+      gap: 0.9rem;
+    }
+
+    .step::before {
+      content: counter(step, decimal-leading-zero);
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.8rem;
+      color: var(--mint);
+      padding-top: 0.2rem;
+    }
+
+    .step strong { display: block; margin-bottom: 0.2rem; }
+    .step span { color: var(--fog); font-size: 0.95rem; }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 2rem 0 3rem;
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--fog);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 1.5rem;
+      justify-content: space-between;
+    }
+
+    footer a:hover { color: var(--mint); }
+
+    @media (max-width: 720px) {
+      .scout,
+      .suite-item {
+        grid-template-columns: 1fr;
+        align-items: start;
+      }
+
+      .scout .btn,
+      .suite-item .link-out { justify-self: start; }
+
+      .hero { align-content: center; padding-top: 6.5rem; }
+      .hero-visual { height: 38%; inset: 18% 0 auto; opacity: 0.7; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+      .hero-copy, .hero-visual, .scout { opacity: 1; transform: none; }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Welcome to the Improved Page</h1>
-    </header>
-    <main>
-        <h2>Contact Us</h2>
-        <form class="contact-form" onsubmit="return validateForm()">
-            <input type="text" id="name" name="name" placeholder="Your Name" required>
-            <input type="email" id="email" name="email" placeholder="Your Email" required>
-            <textarea id="message" name="message" rows="4" placeholder="Your Message" required></textarea>
-            <button type="submit">Send Message</button>
-        </form>
-    </main>
-    <footer>
-        <p>© 2026 Your Company</p>
-    </footer>
-    <script>
-        function validateForm() {
-            var email = document.getElementById("email").value;
-            var pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!pattern.test(email)) {
-                alert("Please enter a valid email address.");
-                return false;
-            }
-            return true;
-        }
-    </script>
+  <div class="atmosphere" aria-hidden="true"></div>
+
+  <div class="tape" aria-hidden="true">
+    <div class="tape-track">
+      <div>Grace Jones · <span>Fresh Launch</span></div>
+      <div>Mad Dog McDougin · <em>Post-Migration</em></div>
+      <div>Lil' Nicky · <span>Pullback / Reclaim</span></div>
+      <div>Research only · <em>No keys · No trades</em></div>
+      <div>Vortix Solana-bot · <span>Grok Templates</span></div>
+      <div>Grace Jones · <span>Fresh Launch</span></div>
+      <div>Mad Dog McDougin · <em>Post-Migration</em></div>
+      <div>Lil' Nicky · <span>Pullback / Reclaim</span></div>
+      <div>Research only · <em>No keys · No trades</em></div>
+      <div>Vortix Solana-bot · <span>Grok Templates</span></div>
+    </div>
+  </div>
+
+  <header class="hero wrap">
+    <div class="hero-visual" aria-hidden="true">
+      <svg viewBox="0 0 1000 420" preserveAspectRatio="xMidYMid slice" role="img">
+        <defs>
+          <linearGradient id="lineMint" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#3dffb5" stop-opacity="0" />
+            <stop offset="35%" stop-color="#3dffb5" stop-opacity="0.9" />
+            <stop offset="100%" stop-color="#ffb454" stop-opacity="0.2" />
+          </linearGradient>
+          <linearGradient id="fillSoft" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#3dffb5" stop-opacity="0.18" />
+            <stop offset="100%" stop-color="#3dffb5" stop-opacity="0" />
+          </linearGradient>
+        </defs>
+        <path d="M0,300 C80,290 120,220 190,240 C260,260 300,160 370,180 C440,200 480,110 560,140 C640,170 690,90 760,120 C830,150 880,70 1000,95 L1000,420 L0,420 Z" fill="url(#fillSoft)" />
+        <path d="M0,300 C80,290 120,220 190,240 C260,260 300,160 370,180 C440,200 480,110 560,140 C640,170 690,90 760,120 C830,150 880,70 1000,95" fill="none" stroke="url(#lineMint)" stroke-width="3" />
+        <g fill="#3dffb5">
+          <circle cx="190" cy="240" r="4" />
+          <circle cx="370" cy="180" r="4" />
+          <circle cx="560" cy="140" r="4" />
+          <circle cx="760" cy="120" r="4" />
+        </g>
+      </svg>
+    </div>
+
+    <div class="hero-copy">
+      <div class="brand">
+        Vortix
+        <small>Solana-bot</small>
+      </div>
+      <h1>Three research scouts. Zero wallet risk.</h1>
+      <p>Grok Bot templates by f33nxxx that screen Solana meme tape and report candidates as structured JSON — never trades, never touches keys.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#scouts">View Solana scouts</a>
+        <a class="btn btn-ghost" href="#add">How to add</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="scouts">
+      <div class="wrap">
+        <p class="section-label">Solana research suite</p>
+        <h2 class="section-head">Scout the tape in three phases</h2>
+        <p class="section-sub">Each bot covers one stage of the meme lifecycle. Add any template to Grok Bot to get your own copy.</p>
+
+        <div class="scout-list">
+          <article class="scout">
+            <div>
+              <p class="scout-meta">01 · Fresh launch momentum</p>
+              <h3>Grace Jones</h3>
+              <p>Screens newly launched Solana meme coins on pump.fun and Jupiter against Fresh Launch Momentum filters, then reports in structured JSON.</p>
+            </div>
+            <a class="btn btn-ghost" href="https://x.ai/bot/Ow7YXdKGX1WI3xeB5rc40" target="_blank" rel="noopener noreferrer">Add template</a>
+          </article>
+
+          <article class="scout">
+            <div>
+              <p class="scout-meta">02 · Post-migration continuation</p>
+              <h3>Mad Dog McDougin</h3>
+              <p>Watches Solana meme coins right after they migrate off pump.fun and flags names that clear strict Post-Migration Continuation filters.</p>
+            </div>
+            <a class="btn btn-ghost" href="https://x.ai/bot/x-ZDSqFzb6O5grUNl3-a7" target="_blank" rel="noopener noreferrer">Add template</a>
+          </article>
+
+          <article class="scout">
+            <div>
+              <p class="scout-meta">03 · Pullback / reclaim</p>
+              <h3>Lil' Nicky</h3>
+              <p>Patient research assistant for Pullback / Reclaim setups. Returns each candidate as structured JSON for paper trading review.</p>
+            </div>
+            <a class="btn btn-ghost" href="https://x.ai/bot/sJ_7r4L1kQ5vgI7yKvUps" target="_blank" rel="noopener noreferrer">Add template</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="safety">
+      <div class="wrap">
+        <p class="section-label">Hard rules</p>
+        <h2 class="section-head">Research and alerts only</h2>
+        <p class="section-sub">These Solana templates are decision support. They do not place trades or hold secrets.</p>
+        <div class="rules">
+          <div class="rule">
+            <i>01</i>
+            <div>
+              <strong>No keys in chat</strong>
+              <span>Never share a seed phrase, recovery phrase, or private key with any bot.</span>
+            </div>
+          </div>
+          <div class="rule">
+            <i>02</i>
+            <div>
+              <strong>No live trading rights</strong>
+              <span>Do not connect exchange or brokerage API keys with trading or withdrawal permissions.</span>
+            </div>
+          </div>
+          <div class="rule">
+            <i>03</i>
+            <div>
+              <strong>Ask before money moves</strong>
+              <span>Paste an approval rule into every money-adjacent bot you install.</span>
+            </div>
+          </div>
+        </div>
+        <p class="copy-rule">Ask first before any purchase, payment, transfer, trade or cancellation.</p>
+      </div>
+    </section>
+
+    <section id="suite">
+      <div class="wrap">
+        <p class="section-label">Also by f33nxxx</p>
+        <h2 class="section-head">Ops and growth templates</h2>
+        <p class="section-sub">Draft-only operators for content, commerce, and SaaS workflows — nothing ships without your OK.</p>
+        <div class="suite-grid">
+          <div class="suite-item">
+            <div>
+              <h3>Money</h3>
+              <p>Social media manager for small online businesses. Plans content, drafts posts, makes graphics, tracks what drives sales.</p>
+            </div>
+            <a class="link-out" href="https://x.ai/bot/QGvQPks2Uc2vsFb_RwVE2" target="_blank" rel="noopener noreferrer">Open →</a>
+          </div>
+          <div class="suite-item">
+            <div>
+              <h3>Captain Jack</h3>
+              <p>Shopify store manager for beginners: product research, pricing, listings, launch readiness, marketing, weekly profit reports.</p>
+            </div>
+            <a class="link-out" href="https://x.ai/bot/helmg8ccQFnR-kaZKR6MU" target="_blank" rel="noopener noreferrer">Open →</a>
+          </div>
+          <div class="suite-item">
+            <div>
+              <h3>Business Ops Manager</h3>
+              <p>Inbox triage, Stripe checks, site upkeep via reviewed PRs, licensing deadlines, leads, and budgeting drafts for SaaS teams.</p>
+            </div>
+            <a class="link-out" href="https://x.ai/bot/rsC1HbSfd5WYOSCeWCnLl" target="_blank" rel="noopener noreferrer">Open →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="add">
+      <div class="wrap">
+        <p class="section-label">Install</p>
+        <h2 class="section-head">Add a template to Grok Bot</h2>
+        <p class="section-sub">Templates are recipes, not clones. You get your own copy; reconnect any plugins yourself.</p>
+        <div class="steps">
+          <div class="step">
+            <div>
+              <strong>Open a template link</strong>
+              <span>Use one of the Add template buttons above to land on the x.ai share page.</span>
+            </div>
+          </div>
+          <div class="step">
+            <div>
+              <strong>Review instructions</strong>
+              <span>Confirm the bot is research-only and matches the description on this page.</span>
+            </div>
+          </div>
+          <div class="step">
+            <div>
+              <strong>Add Bot</strong>
+              <span>Install creates a separate copy under your account. Routines arrive paused.</span>
+            </div>
+          </div>
+          <div class="step">
+            <div>
+              <strong>Run one safe task</strong>
+              <span>Ask for a paper scan while you watch, then enable any schedule only if you want it.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <div>Vortix · Solana-bot · f33nxxx@gmail.com</div>
+    <div>
+      <a href="https://x.ai/bot/guides/templates-for-grok-bot" target="_blank" rel="noopener noreferrer">Grok Bot template guide</a>
+    </div>
+  </footer>
+
+  <script>
+    const scouts = document.querySelectorAll(".scout");
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("in");
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+    scouts.forEach((el, i) => {
+      el.style.transitionDelay = `${i * 90}ms`;
+      io.observe(el);
+    });
+  </script>
 </body>
 </html>
